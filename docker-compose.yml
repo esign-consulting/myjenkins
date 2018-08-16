@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jenkins:
+    build: .
+    image: esignbr/myjenkins
+    container_name: "myjenkins"
+    environment:
+      - JENKINS_USER=admin
+      - JENKINS_PASS=jenkins
+      - SONARQUBE_URL=http://sonarqube
+    ports:
+      - 8080:8080
+    links:
+      - sonarqube:sonarqube
+    depends_on:
+      - sonarqube
+  sonarqube:
+    image: sonarqube:lts
+    container_name: "sonarqube"
