@@ -9,7 +9,7 @@ Jenkins jenkins = Jenkins.getInstance()
 def mavenDesc = jenkins.getExtensionList(Maven.DescriptorImpl.class)[0]
 
 def isp = new InstallSourceProperty()
-def autoInstaller = new Maven.MavenInstaller("3.5.3")
+def autoInstaller = new Maven.MavenInstaller("3.5.4")
 isp.installers.add(autoInstaller)
 
 def proplist = new DescribableList<ToolProperty<?>, ToolPropertyDescriptor>()
