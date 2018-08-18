@@ -3,7 +3,7 @@ services:
   jenkins:
     build: .
     image: esignbr/myjenkins
-    container_name: "myjenkins"
+    container_name: myjenkins
     environment:
       - JENKINS_USER=admin
       - JENKINS_PASS=jenkins
@@ -16,4 +16,6 @@ services:
       - sonarqube
   sonarqube:
     image: sonarqube:lts
-    container_name: "sonarqube"
+    container_name: sonarqube
+    ports:
+      - 9000:9000
