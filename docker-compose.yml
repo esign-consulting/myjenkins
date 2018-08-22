@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   jenkins:
     build: .
     image: esignbr/myjenkins
@@ -10,10 +11,9 @@ services:
       - SONARQUBE_URL=http://sonarqube
     ports:
       - 8080:8080
-    links:
-      - sonarqube:sonarqube
     depends_on:
       - sonarqube
+
   sonarqube:
     image: sonarqube:lts
     container_name: sonarqube
