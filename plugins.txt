@@ -49,6 +49,7 @@ handlebars
 handy-uri-templates-2-api
 htmlpublisher
 jackson2-api
+jdk-tool
 jenkins-design-language
 jira
 jquery-detached
