@@ -6,8 +6,6 @@ services:
     image: esignbr/myjenkins
     container_name: myjenkins
     environment:
-      - JENKINS_USER=admin
-      - JENKINS_PASS=jenkins
       - SONARQUBE_URL=http://sonarqube:9000
     ports:
       - 8080:8080
