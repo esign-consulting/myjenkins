@@ -5,6 +5,8 @@ services:
     build: .
     image: esignbr/myjenkins
     container_name: myjenkins
+    volumes:
+      - jenkins_data:/var/jenkins_home
     environment:
       - SONARQUBE_URL=http://sonarqube:9000
     ports:
@@ -17,3 +19,6 @@ services:
     container_name: sonarqube
     ports:
       - 9000:9000
+
+volumes:
+  jenkins_data:
