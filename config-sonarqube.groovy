@@ -1,14 +1,18 @@
 #!groovy
 
 import jenkins.model.Jenkins
-import hudson.plugins.sonar.*
+import hudson.plugins.sonar.SonarGlobalConfiguration
+import hudson.plugins.sonar.SonarInstallation
+
+def sonarUrl = System.getenv("SONARQUBE_URL")
+if (sonarUrl == null)
+    return
 
 def jenkins = Jenkins.getInstance()
-def sonar_conf = jenkins.getDescriptor(SonarGlobalConfiguration.class)
+def sonarConfig = jenkins.getDescriptor(SonarGlobalConfiguration.class)
 
-def env = System.getenv()
-def sonar_inst = new SonarInstallation("SonarQube", env.SONARQUBE_URL, null, null, null, null, null)
+def sonarInstall = new SonarInstallation("SonarQube", sonarUrl, null, null, null, null, null)
+def sonarInstalls = sonarConfig.getInstallations() + sonarInstall
 
-def sonar_installations = sonar_conf.getInstallations() + sonar_inst
-sonar_conf.setInstallations((SonarInstallation[]) sonar_installations)
-sonar_conf.save()
+sonarConfig.setInstallations((SonarInstallation[]) sonarInstalls)
+sonarConfig.save()
