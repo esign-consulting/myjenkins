@@ -7,7 +7,6 @@ services:
     container_name: myjenkins
     volumes:
       - jenkins_data:/var/jenkins_home
-      - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - SONARQUBE_URL=http://sonarqube:9000
