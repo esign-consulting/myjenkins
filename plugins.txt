@@ -1,8 +1,10 @@
 ace-editor
+ansible
 ant
 antisamy-markup-formatter
 apache-httpcomponents-client-4-api
 authentication-tokens
+basic-branch-build-strategies
 blueocean
 blueocean-autofavorite
 blueocean-bitbucket-pipeline
@@ -56,6 +58,7 @@ jquery-detached
 jsch
 junit
 ldap
+lockable-resources
 mailer
 mapdb-api
 matrix-auth
