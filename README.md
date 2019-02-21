@@ -8,3 +8,8 @@ This custom Jenkins image is built with the following features:
 - Integration with [SonarQube](https://www.sonarqube.org) made through the installation of the [SonarQube plugin](https://plugins.jenkins.io/sonar) and the configuration of the *SonarQube URL* defined by the environment variable **SONARQUBE_URL**.
 - [Apache Maven](https://maven.apache.org) automatic installation. The Maven version is get from the environment variable **MAVEN_VERSION**. If no value is set, *3.6.0* is assumed. Maven can then be referenced by **M3** in the Jenkinsfile.
 - Integration with [jmx_exporter](https://github.com/prometheus/jmx_exporter), a process for exposing JMX Beans via HTTP for [Prometheus](https://prometheus.io) consumption. The JVM metrics are exposed through port 8081.
+- Security improved, through:
+  - [Enabling CSRF protection](https://wiki.jenkins.io/display/JENKINS/CSRF+Protection);
+  - [Disabling Jenkins CLI](https://support.cloudbees.com/hc/en-us/articles/234709648-Disable-Jenkins-CLI);
+  - [Enabling Agent -> Master access control](https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control);
+  - Disabling the deprecated [JNLP](https://en.wikipedia.org/wiki/Java_Web_Start#Java_Network_Launching_Protocol_(JNLP)).
