@@ -1,0 +1,5 @@
+---
+all:
+  hosts:
+    myjenkins:
+      ansible_connection: docker
