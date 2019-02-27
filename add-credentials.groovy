@@ -13,4 +13,4 @@ if (credentialsId == null || credentialsUsername == null || credentialsPassword 
 Credentials credentials = new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL, credentialsId, null, credentialsUsername, credentialsPassword)
 SystemCredentialsProvider provider = SystemCredentialsProvider.getInstance()
 if (!provider.getCredentials().contains(credentials))
-	provider.getStore().addCredentials(Domain.global(), credentials)
+    provider.getStore().addCredentials(Domain.global(), credentials)
