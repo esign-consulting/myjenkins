@@ -4,12 +4,13 @@
 
 This custom Jenkins image is built with the following features:
 
-- Default administrator user whose credentials are defined through the environment variables **JENKINS_USER** and **JENKINS_PASS**. If no value is set to the these environment files, the default is *admin* for username and *jenkins* for password.
+- [Default administrator](default-user.groovy) user whose credentials are defined through the environment variables **JENKINS_USER** and **JENKINS_PASS**. If no value is set to the these environment files, the default is *admin* for username and *jenkins* for password.
+- [Default location configuration](config-location.groovy) through the definition of the environment variables **JENKINS_URL** and **JENKINS_EMAIL**;
 - Optional [add of new global credentials](https://jenkins.io/doc/book/using/using-credentials/#adding-new-global-credentials), if defined the environment variables **CREDENTIALS_ID**, **CREDENTIALS_USER** and **CREDENTIALS_PASS**;
 - Integration with [SonarQube](https://www.sonarqube.org) made through the installation of the [SonarQube plugin](https://plugins.jenkins.io/sonar) and the configuration of the *SonarQube URL* defined by the environment variable **SONARQUBE_URL**.
 - [Apache Maven](https://maven.apache.org) automatic installation. The Maven version is get from the environment variable **MAVEN_VERSION**. If no value is set, *3.6.0* is assumed. Maven can then be referenced by **M3** in the Jenkinsfile.
 - Integration with [jmx_exporter](https://github.com/prometheus/jmx_exporter), a process for exposing JMX Beans via HTTP for [Prometheus](https://prometheus.io) consumption. The JVM metrics are exposed through port 8081.
-- Security improved, through:
+- [Security improved](harden-jenkins.groovy), through:
   - [Enabling CSRF protection](https://wiki.jenkins.io/display/JENKINS/CSRF+Protection);
   - [Disabling Jenkins CLI](https://support.cloudbees.com/hc/en-us/articles/234709648-Disable-Jenkins-CLI);
   - [Enabling Agent -> Master access control](https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control);
