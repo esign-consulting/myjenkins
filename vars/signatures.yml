@@ -1,0 +1,5 @@
+---
+signatures:
+  - method hudson.plugins.git.GitSCM getBranches
+  - method hudson.plugins.git.GitSCM getUserRemoteConfigs
+  - method hudson.plugins.git.GitSCMBackwardCompatibility getExtensions

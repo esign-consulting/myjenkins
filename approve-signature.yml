@@ -1,0 +1,19 @@
+---
+- hosts: myjenkins
+  gather_facts: false
+  vars:
+    script_content: "{{ lookup('file', 'approve-signature.groovy')
+      | regex_replace('System\\.getenv\\(\"(SIGNATURE)\"\\)', '\"${\\1}\"') }}"
+  vars_files:
+    - vars/signatures.yml
+  tasks:
+    - name: Approve signatures
+      jenkins_script:
+        script: "{{ script_content }}"
+        args:
+          SIGNATURE: "{{ item }}"
+        user: admin
+        password: jenkins
+      loop: "{{ signatures }}"
+      register: script_result
+      changed_when: "'Result: [[Ljava.lang.String;@' in script_result.output"
