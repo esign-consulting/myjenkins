@@ -4,6 +4,9 @@ ant
 antisamy-markup-formatter
 apache-httpcomponents-client-4-api
 authentication-tokens
+aws-credentials
+aws-java-sdk
+azure-credentials
 basic-branch-build-strategies
 blueocean
 blueocean-autofavorite
