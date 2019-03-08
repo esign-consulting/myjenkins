@@ -1,3 +1,5 @@
+#!groovy
+
 import com.cloudbees.plugins.credentials.Credentials
 import com.cloudbees.plugins.credentials.CredentialsScope
 import com.cloudbees.plugins.credentials.SystemCredentialsProvider
