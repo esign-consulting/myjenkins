@@ -8,7 +8,7 @@ RUN mkdir /usr/bin/jmx_exporter \
  && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
  && apt-get update && apt-get install -y --no-install-recommends software-properties-common apt-transport-https \
  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" \
- && apt-get update && apt-get install -y --no-install-recommends docker-ce python-pip \
+ && apt-get update && apt-get install -y --no-install-recommends docker-ce python-pip python-jmespath \
  && usermod -aG docker jenkins \
  && pip install setuptools wheel \
  && pip install ansible \
