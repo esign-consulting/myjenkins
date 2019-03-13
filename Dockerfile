@@ -5,11 +5,15 @@ USER root
 RUN mkdir /usr/bin/jmx_exporter \
  && wget -O /usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.3.1/jmx_prometheus_javaagent-0.3.1.jar \
  && echo "{}" > /usr/bin/jmx_exporter/config.yaml \
+ && wget -c https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz -O - | tar -xzC /usr/local/bin \
  && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
  && apt-get update && apt-get install -y --no-install-recommends software-properties-common apt-transport-https \
  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" \
- && apt-get update && apt-get install -y --no-install-recommends docker-ce python-pip python-jmespath \
+ && apt-get update && apt-get install -y --no-install-recommends docker-ce python-pip python-jmespath firefox-esr \
  && usermod -aG docker jenkins \
+ && wget -c "https://download.mozilla.org/?product=firefox-65.0.1&os=linux64&lang=en-US" -O - | tar -xjC /opt \
+ && mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig \
+ && ln -s /opt/firefox/firefox /usr/lib/firefox-esr/firefox-esr \
  && pip install setuptools wheel \
  && pip install ansible \
  && rm -rf /var/lib/apt/lists/*
