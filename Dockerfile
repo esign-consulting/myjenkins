@@ -11,7 +11,7 @@ RUN mkdir /usr/bin/jmx_exporter \
  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" \
  && apt-get update && apt-get install -y --no-install-recommends docker-ce python-pip python-jmespath firefox-esr \
  && usermod -aG docker jenkins \
- && wget -c "https://download.mozilla.org/?product=firefox-65.0.1&os=linux64&lang=en-US" -O - | tar -xjC /opt \
+ && wget -c https://download-installer.cdn.mozilla.net/pub/firefox/releases/65.0/linux-x86_64/en-US/firefox-65.0.tar.bz2 -O - | tar -xjC /opt \
  && mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig \
  && ln -s /opt/firefox/firefox /usr/lib/firefox-esr/firefox-esr \
  && pip install setuptools wheel \
