@@ -35,6 +35,7 @@ build-timeout
 cloudbees-bitbucket-branch-source
 cloudbees-folder
 command-launcher
+confluence-publisher
 credentials
 credentials-binding
 display-url-api
@@ -68,6 +69,7 @@ matrix-auth
 matrix-project
 mercurial
 momentjs
+nexus-jenkins-plugin
 pam-auth
 pipeline-build-step
 pipeline-github-lib
@@ -87,6 +89,7 @@ pubsub-light
 resource-disposer
 scm-api
 script-security
+slack
 sonar
 sse-gateway
 ssh-credentials
