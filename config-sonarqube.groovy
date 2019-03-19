@@ -4,15 +4,18 @@ import jenkins.model.Jenkins
 import hudson.plugins.sonar.SonarGlobalConfiguration
 import hudson.plugins.sonar.SonarInstallation
 
+def sonarName = "SonarQube"
 def sonarUrl = System.getenv("SONARQUBE_URL")
 if (sonarUrl == null)
     return
 
-def jenkins = Jenkins.getInstance()
-def sonarConfig = jenkins.getDescriptor(SonarGlobalConfiguration.class)
+Jenkins jenkins = Jenkins.getInstance()
+SonarGlobalConfiguration sonarConfig = jenkins.getDescriptor(SonarGlobalConfiguration.class)
 
-def sonarInstall = new SonarInstallation("SonarQube", sonarUrl, null, null, null, null, null)
-def sonarInstalls = sonarConfig.getInstallations() + sonarInstall
+SonarInstallation[] sonarInstalls = sonarConfig.getInstallations()
+if (sonarInstalls.find { sonarInstall -> return sonarName.equals(sonarInstall.getName()) })
+    return
 
-sonarConfig.setInstallations((SonarInstallation[]) sonarInstalls)
+sonarInstalls += new SonarInstallation(sonarName, sonarUrl, null, null, null, null, null)
+sonarConfig.setInstallations(sonarInstalls)
 sonarConfig.save()
