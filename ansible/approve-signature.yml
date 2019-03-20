@@ -2,7 +2,7 @@
 - hosts: myjenkins
   gather_facts: false
   vars:
-    script_content: "{{ lookup('file', 'approve-signature.groovy')
+    script_content: "{{ lookup('file', '../scripts/approve-signature.groovy')
       | regex_replace('System\\.getenv\\(\"(SIGNATURE)\"\\)', '\"${\\1}\"') }}"
   vars_files:
     - vars/signatures.yml

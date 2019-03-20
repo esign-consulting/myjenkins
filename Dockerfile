@@ -22,7 +22,7 @@ USER jenkins
 ENV JAVA_OPTS="-javaagent:/usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar=8081:/usr/bin/jmx_exporter/config.yaml -Djenkins.install.runSetupWizard=false"
 EXPOSE 8081
 
-COPY *.groovy /usr/share/jenkins/ref/init.groovy.d/
+COPY scripts/*.groovy /usr/share/jenkins/ref/init.groovy.d/
 
 COPY plugins.txt /usr/share/jenkins/ref
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
