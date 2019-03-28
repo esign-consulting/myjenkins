@@ -17,6 +17,7 @@ blueocean-core-js
 blueocean-dashboard
 blueocean-display-url
 blueocean-events
+blueocean-executor-info
 blueocean-git-pipeline
 blueocean-github-pipeline
 blueocean-i18n
@@ -46,6 +47,7 @@ email-ext
 favorite
 git
 git-client
+git-parameter
 git-server
 github
 github-api
@@ -58,6 +60,7 @@ jackson2-api
 jdk-tool
 jenkins-design-language
 jira
+jquery
 jquery-detached
 jsch
 junit
