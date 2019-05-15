@@ -9,8 +9,8 @@ RUN mkdir /usr/bin/jmx_exporter \
  && apk add --no-cache build-base docker python3 python3-dev libffi-dev openssl-dev firefox-esr openrc \
  && rc-update add docker boot \
  && addgroup jenkins docker \
- && pip3 install setuptools wheel \
- && pip3 install ansible
+ && pip3 install --no-cache-dir setuptools wheel \
+ && pip3 install --no-cache-dir ansible
 USER jenkins
 
 ENV JAVA_OPTS="-javaagent:/usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar=8081:/usr/bin/jmx_exporter/config.yaml -Djenkins.install.runSetupWizard=false"
