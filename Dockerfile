@@ -6,7 +6,7 @@ RUN mkdir /usr/bin/jmx_exporter \
  && wget -O /usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.3.1/jmx_prometheus_javaagent-0.3.1.jar \
  && echo "{}" > /usr/bin/jmx_exporter/config.yaml \
  && wget -c https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz -O - | tar -xzC /usr/local/bin \
- && apk add --no-cache build-base docker python3 python3-dev libffi-dev openssl-dev firefox-esr openrc \
+ && apk add --no-cache build-base docker python3 python3-dev libffi-dev openssl-dev firefox-esr openrc su-exec \
  && rc-update add docker boot \
  && addgroup jenkins docker \
  && pip3 install --no-cache-dir setuptools wheel \
