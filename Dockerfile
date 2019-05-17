@@ -10,7 +10,7 @@ RUN mkdir /usr/bin/jmx_exporter \
  && rc-update add docker boot \
  && usermod -aG docker jenkins \
  && pip3 install --no-cache-dir setuptools wheel \
- && pip3 install --no-cache-dir ansible
+ && pip3 install --no-cache-dir ansible jmespath boto boto3
 
 ENV JAVA_OPTS="-javaagent:/usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar=8081:/usr/bin/jmx_exporter/config.yaml -Djenkins.install.runSetupWizard=false"
 EXPOSE 8081
