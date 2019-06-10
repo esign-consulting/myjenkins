@@ -4,6 +4,19 @@
 
 This custom Jenkins image is built with the following features:
 
+- [Default administrator](#default-administrator)
+- [Default location configuration](#default-location-configuration)
+- [Default Maven installation](#default-maven-installation)
+- [Adding a global credentials](#adding-a-global-credentials)
+- [Adding an AWS credentials](#adding-an-aws-credentials)
+- [In-process Script Approval](#in-process-script-approval)
+- [Integration with Bitbucket](#integration-with-bitbucket)
+- [Integration with SonarQube](#integration-with-sonarqube)
+- [Integration with Slack](#integration-with-slack)
+- [JVM Metrics](#jvm-metrics)
+- [UI tests capability](#ui-tests-capability)
+- [Jenkins hardening](#jenkins-hardening)
+
 ## Default administrator
 
 The default Jenkins administrator account is created during the execution of [default-user.groovy](scripts/default-user.groovy). Its credentials are obtained from the environment variables:
