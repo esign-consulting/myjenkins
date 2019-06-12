@@ -4,7 +4,9 @@
 
 This custom Jenkins image is built with the following features:
 
+- [Pre-installed plugins](#pre-installed-plugins)
 - [Default administrator](#default-administrator)
+- [No setup wizard](#no-setup-wizard)
 - [Default location configuration](#default-location-configuration)
 - [Default Maven installation](#default-maven-installation)
 - [Adding a global credentials](#adding-a-global-credentials)
@@ -17,12 +19,22 @@ This custom Jenkins image is built with the following features:
 - [UI tests capability](#ui-tests-capability)
 - [Jenkins hardening](#jenkins-hardening)
 
+## Preinstalled plugins
+
+A bunch of [plugins](plugins.txt) are installed during the image build. Once they increase the image size considerably, the [Alpine](https://alpinelinux.org) version of the Jenkins Docker image is used as the base image ([jenkins/jenkins:lts-alpine](https://github.com/jenkinsci/docker/blob/master/Dockerfile-alpine)), in order to keep the built image as small as possible.
+
+Most of the plugins enable other features, as described below.
+
 ## Default administrator
 
 The default Jenkins administrator account is created during the execution of [default-user.groovy](scripts/default-user.groovy). Its credentials are obtained from the environment variables:
 
 - JENKINS_USER (default: admin)
 - JENKINS_PASS (default: jenkins)
+
+## No setup wizard
+
+With preinstalled plugins and a default administrator, there is no need of following the Jenkins wizard during its setup. For this reason, the wizard is disabled: `-Djenkins.install.runSetupWizard=false`.
 
 ## Default location configuration
 
@@ -156,7 +168,9 @@ This feature is enabled by the [Slack Notification plugin](https://plugins.jenki
 
 ## JVM Metrics
 
-The Jenkins JVM metrics are exposed by [jmx_exporter](https://github.com/prometheus/jmx_exporter), a process for exposing JMX Beans via HTTP for [Prometheus](https://prometheus.io) consumption. The JVM metrics are exposed through port **8081**.
+The Jenkins JVM metrics are exposed by [jmx_exporter](https://github.com/prometheus/jmx_exporter), a process for exposing JMX Beans via HTTP for [Prometheus](https://prometheus.io) consumption. The JVM metrics are exposed through port **8081**, as passed to the Java Agent:
+
+`-javaagent:/usr/bin/jmx_exporter/jmx_prometheus_javaagent.jar=8081:/usr/bin/jmx_exporter/config.yaml`
 
 ## UI tests capability
 
