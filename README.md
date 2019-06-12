@@ -4,7 +4,7 @@
 
 This custom Jenkins image is built with the following features:
 
-- [Pre-installed plugins](#preinstalled-plugins)
+- [Preinstalled plugins](#preinstalled-plugins)
 - [Default administrator](#default-administrator)
 - [No setup wizard](#no-setup-wizard)
 - [Default location configuration](#default-location-configuration)
