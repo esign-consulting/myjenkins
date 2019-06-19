@@ -9,6 +9,7 @@ This custom Jenkins image is built with the following features:
 - [No setup wizard](#no-setup-wizard)
 - [Default location configuration](#default-location-configuration)
 - [Default Maven installation](#default-maven-installation)
+- [Docker in Docker](#docker-in-docker)
 - [Adding a global credentials](#adding-a-global-credentials)
 - [Adding an AWS credentials](#adding-an-aws-credentials)
 - [In-process Script Approval](#in-process-script-approval)
@@ -57,6 +58,26 @@ node {
     ...
     stage('Build and Unit Tests') {
         sh "'${mvnHome}/bin/mvn' clean install"
+    }
+    ...
+}
+```
+
+## Docker in Docker
+
+The myjenkins Docker image is prepared itself to enable the execution of Docker commands. So, you are able to run pipelines in the myjenkins Docker container that build Docker images, push Docker images to a Docker Registry or execute any other Docker command (example below). The only requirement is to [bind mount](https://docs.docker.com/storage/bind-mounts) your host Docker daemon Unix socket to the container Docker daemon Unix socket: `-v /var/run/docker.sock:/var/run/docker.sock`.
+
+```groovy
+node {
+    def appDockerImage
+    ...
+    stage('Build Docker Image') {
+        appDockerImage = docker.build("esignbr/logistics")
+    }
+    stage('Deploy Docker Image') {
+        docker.withRegistry("", "dockerhub") {
+            appDockerImage.push()
+        }
     }
     ...
 }
