@@ -4,6 +4,7 @@ ant
 antisamy-markup-formatter
 apache-httpcomponents-client-4-api
 authentication-tokens
+authorize-project
 aws-credentials
 aws-java-sdk
 azure-credentials
