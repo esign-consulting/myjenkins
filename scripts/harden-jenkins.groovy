@@ -9,9 +9,6 @@ Jenkins jenkins = Jenkins.getInstance()
 // CSRF protection
 jenkins.setCrumbIssuer(new DefaultCrumbIssuer(true))
 
-// Disable CLI remoting
-jenkins.getDescriptor("jenkins.CLI").get().setEnabled(false)
-
 // Enable Agent to master security subsystem
 jenkins.injector.getInstance(AdminWhitelistRule.class).setMasterKillSwitch(false);
 

@@ -214,6 +214,5 @@ node {
 The Jenkins security is improved during the execution of [harden-jenkins.groovy](scripts/harden-jenkins.groovy), when the following actions are taken:
 
 - [Enabling CSRF protection](https://wiki.jenkins.io/display/JENKINS/CSRF+Protection);
-- [Disabling Jenkins CLI](https://support.cloudbees.com/hc/en-us/articles/234709648-Disable-Jenkins-CLI);
 - [Enabling Agent -> Master access control](https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control);
 - Disabling the deprecated [JNLP](https://en.wikipedia.org/wiki/Java_Web_Start#Java_Network_Launching_Protocol_(JNLP)).
