@@ -211,7 +211,7 @@ node {
 
 ## Jenkins hardening
 
-The Jenkins security is improved during the execution of [harden-jenkins.groovy](scripts/harden-jenkins.groovy) and [default-project-authorization](default-project-authorization), when the following actions are taken:
+The Jenkins security is improved during the execution of [harden-jenkins.groovy](scripts/harden-jenkins.groovy) and [default-project-authorization](scripts/default-project-authorization), when the following actions are taken:
 
 - [Enabling CSRF protection](https://wiki.jenkins.io/display/JENKINS/CSRF+Protection);
 - [Enabling Agent -> Master access control](https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control);
