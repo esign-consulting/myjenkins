@@ -211,8 +211,9 @@ node {
 
 ## Jenkins hardening
 
-The Jenkins security is improved during the execution of [harden-jenkins.groovy](scripts/harden-jenkins.groovy), when the following actions are taken:
+The Jenkins security is improved during the execution of [harden-jenkins.groovy](scripts/harden-jenkins.groovy) and [default-project-authorization](default-project-authorization), when the following actions are taken:
 
 - [Enabling CSRF protection](https://wiki.jenkins.io/display/JENKINS/CSRF+Protection);
 - [Enabling Agent -> Master access control](https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control);
-- Disabling the deprecated [JNLP](https://en.wikipedia.org/wiki/Java_Web_Start#Java_Network_Launching_Protocol_(JNLP)).
+- Disabling the deprecated [JNLP](https://en.wikipedia.org/wiki/Java_Web_Start#Java_Network_Launching_Protocol_(JNLP));
+- Preventing builds run as SYSTEM by configuring [access control for builds](https://jenkins.io/doc/book/system-administration/security/build-authorization).
