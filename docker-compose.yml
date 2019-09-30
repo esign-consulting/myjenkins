@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
 
   jenkins:
@@ -19,10 +19,41 @@ services:
       - sonarqube
 
   sonarqube:
-    image: sonarqube:lts
+    image: sonarqube:7.8-community
     container_name: sonarqube
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+    environment:
+      - sonar.jdbc.url=jdbc:postgresql://postgres/sonar
     ports:
       - 9000:9000
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORDsonar
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sonar"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   jenkins_data:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  postgresql:
+  postgresql_data:
