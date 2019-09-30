@@ -42,7 +42,7 @@ services:
       - postgresql_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORDsonar
+      - POSTGRES_PASSWORD=sonar
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U sonar"]
       interval: 10s
