@@ -150,6 +150,8 @@ Jenkins can be integrated to [SonarQube](https://www.sonarqube.org) with the exe
 
 - SONARQUBE_URL - the endpoint where your SonarQube instance is available
 
+:warning: If you have disabled anonymous access in SonarQube and have generated an user token for performing the static code analysis, set the environment variable SONARQUBE_TOKEN.
+
 SonarQube can then be referenced by `SonarQube` in the Jenkinsfile, like in the example below:
 
 ```groovy
@@ -163,6 +165,8 @@ node {
     ...
 }
 ```
+
+:information_source: You don't need to pass the *installationName* parameter to **withSonarQubeEnv** if just one SonarQube server was configured in Jenkins. More details in [Using a Jenkins pipeline](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/#header-5).
 
 This feature is enabled by the [SonarQube plugin](https://plugins.jenkins.io/sonar).
 
