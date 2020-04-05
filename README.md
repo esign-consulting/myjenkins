@@ -48,7 +48,7 @@ The default Jenkins location is configured during the execution of [config-locat
 
 The default [Apache Maven](https://maven.apache.org) installation is configured during the execution of [config-maven.groovy](scripts/config-maven.groovy). The Maven version is obtained from the environment variable:
 
-- MAVEN_VERSION (default: 3.6.0)
+- MAVEN_VERSION (default: 3.6.3)
 
 Maven can then be referenced by `M3` in the Jenkinsfile, like in the example below:
 
