@@ -9,6 +9,7 @@ This custom Jenkins image is built with the following features:
 - [No setup wizard](#no-setup-wizard)
 - [Default location configuration](#default-location-configuration)
 - [Default Maven installation](#default-maven-installation)
+- [Capability of running Ansible playbooks](#capability-of-running-ansible-playbooks)
 - [Docker in Docker](#docker-in-docker)
 - [Adding a global credentials](#adding-a-global-credentials)
 - [Adding an AWS credentials](#adding-an-aws-credentials)
@@ -62,6 +63,24 @@ node {
     ...
 }
 ```
+
+## Capability of running Ansible playbooks
+
+The default [Ansible](https://www.ansible.com) installation is configured during the execution of [config-ansible.groovy](scripts/config-ansible.groovy). Ansible can then be referenced by `Ansible` in the Jenkinsfile, like in the example below:
+
+```groovy
+node {
+    ...
+    stage('Deploy to AWS') {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            ansiblePlaybook(installation: 'Ansible', playbook: 'deploy-to-aws.yml')
+        }
+    }
+    ...
+}
+```
+
+This feature is enabled by the [Ansible plugin](https://plugins.jenkins.io/ansible).
 
 ## Docker in Docker
 
@@ -120,7 +139,7 @@ node {
     ...
     stage('Deploy to AWS') {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            ansiblePlaybook(playbook: 'deploy-to-aws.yml')
+            ansiblePlaybook(installation: 'Ansible', playbook: 'deploy-to-aws.yml')
         }
     }
     ...
