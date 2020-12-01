@@ -18,7 +18,6 @@ blueocean-core-js
 blueocean-dashboard
 blueocean-display-url
 blueocean-events
-blueocean-executor-info
 blueocean-git-pipeline
 blueocean-github-pipeline
 blueocean-i18n
@@ -81,7 +80,6 @@ pipeline-graph-analysis
 pipeline-input-step
 pipeline-milestone-step
 pipeline-model-api
-pipeline-model-declarative-agent
 pipeline-model-definition
 pipeline-model-extensions
 pipeline-rest-api
