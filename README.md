@@ -1,6 +1,6 @@
 # Jenkins custom Docker image
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Docker Build status](https://img.shields.io/docker/build/esignbr/myjenkins.svg)](https://hub.docker.com/r/esignbr/myjenkins/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/esignbr/myjenkins.svg)](https://hub.docker.com/r/esignbr/myjenkins)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Docker Build status](https://img.shields.io/docker/cloud/build/esignbr/myjenkins.svg)](https://hub.docker.com/r/esignbr/myjenkins/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/esignbr/myjenkins.svg)](https://hub.docker.com/r/esignbr/myjenkins)
 
 This custom Jenkins image is built with the following features:
 
