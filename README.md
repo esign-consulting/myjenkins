@@ -161,7 +161,7 @@ Jenkins can be integrated to [Bitbucket](https://www.atlassian.com/software/bitb
 - BITBUCKET_URL - the endpoint where your Bitbucket instance is available
 - BITBUCKET_CREDENTIALS_ID - the global credentials id previously added to Jenkins with the Bitbucket *username* and *password*
 
-This feature is enabled by the [Bitbucket plugin](https://plugins.jenkins.io/bitbucket).
+This feature is enabled by the [Bitbucket Branch Source plugin](https://plugins.jenkins.io/cloudbees-bitbucket-branch-source).
 
 ## Integration with SonarQube
 
