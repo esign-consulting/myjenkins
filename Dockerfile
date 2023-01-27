@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts-alpine
+FROM jenkins/jenkins:2.375.2-lts-alpine
 LABEL maintainer "Gustavo Muniz do Carmo <gustavo@esign.com.br>"
 
 ARG JMX_EXPORTER_VERSION=0.14.0
