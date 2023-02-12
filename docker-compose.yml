@@ -27,24 +27,30 @@ services:
       - sonarqube_logs:/opt/sonarqube/logs
       - sonarqube_extensions:/opt/sonarqube/extensions
     environment:
-      - sonar.jdbc.url=jdbc:postgresql://postgres/sonar
+      - SONAR_JDBC_USERNAME=sonar
+      - SONAR_JDBC_PASSWORD=S3cr3t
+      - SONAR_JDBC_URL=jdbc:postgresql://postgres:5432/sonar
     ports:
       - 9000:9000
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     depends_on:
       postgres:
         condition: service_healthy
 
   postgres:
-    image: postgres:11-alpine
+    image: postgres:15.2-alpine3.17
     container_name: postgres
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=sonar
+      - POSTGRES_PASSWORD=S3cr3t
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U sonar"]
+      test: ["CMD-SHELL", "pg_isready"]
       interval: 10s
       timeout: 5s
       retries: 5
